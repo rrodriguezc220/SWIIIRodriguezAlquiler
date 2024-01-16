@@ -1,0 +1,19 @@
+BoundedContext GestionAlquileres
+BoundedContext GestionClientes
+BoundedContext GestionVehiculos
+BoundedContext GestionPagos
+BoundedContext GestionSeguridad
+
+ContextMap RodriguezAlquiler_ContextMap {
+
+contains GestionAlquileres, GestionClientes, GestionVehiculos, GestionPagos, GestionSeguridad
+
+GestionClientes -> GestionAlquileres
+GestionVehiculos -> GestionAlquileres
+GestionClientes [U]->[D,ACL] GestionPagos
+GestionAlquileres [U]->[D,ACL] GestionPagos
+GestionVehiculos [U] -> [D,CF] GestionClientes
+GestionClientes [U]->[D,ACL] GestionSeguridad
+GestionPagos [U]->[D,ACL] GestionSeguridad
+
+}
